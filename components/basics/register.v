@@ -1,5 +1,7 @@
+`include "instruction_memory.v"
+
 module register (
-    input a,
+    input a1, a2, a3, wd,
     output b
 );
 

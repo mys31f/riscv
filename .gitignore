@@ -1,1 +1,30 @@
+# Compiled output
 *.out
+*.o
+*.vvp
+*.vcd
+a.out
+
+# Verilog compilation files
+*.lxt
+*.lx2
+*.fst
+*.vpi
+
+# Build directories
+task/
+
+# Editor and IDE files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Simulation files
+*.log
+*.dump
