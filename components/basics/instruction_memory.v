@@ -25,7 +25,7 @@ module instruction_memory (
       wire rst;
 initial rst = 0;
 
-  always @(*) begin
+  always_comb begin
     if (rst) begin
         rdata = 32'b0;
     end
@@ -33,8 +33,8 @@ end
     // decoding based on opcode
     // extracted data will be put into the rdata array, and will split up later
 
-always @(*) begin    
-case (opcode) 
+always_comb begin
+case (opcode)
         7'b0110011: begin // algebraic instructions
             rd = a[11:7];
             funct3 = a[14:12];
@@ -72,8 +72,26 @@ case (opcode)
             rdata = {imm_s_type_2, rs2, rs1, funct3, imm_s_type_1, opcode};
         end
         7'b1100011: begin // branching instructions
-            
+            rd = a[11:7];
+            imm_j_type = a[31:12];
+
+            rdata = {imm_j_type, rd, opcode};
         end
+        // 7'b1101111: jump and link (JAL) instruction
+        // 7'b1101111: begin
+        //     
+        // end
+        // 7'b1100111: jump and link register (JALR) instruction
+        // 7'b1100111: begin
+        //     
+        // end
+        // 7'b0110111: load upper immediate (LUI) instruction
+        // 7'b0110111: begin
+        // end
+        // 7'b0010111: add immediate to PC (AUIPC) instruction
+        // 7'b0010111: begin
+        //     
+        // end
         default: rst = 1;
     endcase
 end
