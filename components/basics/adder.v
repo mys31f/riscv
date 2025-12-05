@@ -1,5 +1,3 @@
-`include "program_counter.v"
-
 module adder #(
     parameter logic OFFSET = 4'b0100
 ) (
